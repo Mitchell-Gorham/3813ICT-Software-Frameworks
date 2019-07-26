@@ -10,15 +10,28 @@ $( document ).ready(function() {
             upwd : $("#upwd").val()
         }
         $.ajax({
-            type : "POST"
-            contentType : "application/json"
+            type : "POST",
+            contentType : "application/json",
             url : window.location + "api/login",
             data : JSON.stringify(formData),
-            dataType : "json"
+            dataType : "json",
             success : function(customer) {
-                
+                if (customer.valid == true){
+                    $("#loginform").removeClass("fail");
+                    $("#loginform").addClass("success");
+                }else{
+                    $("#loginform").removeClass("success");
+                    $("#loginform").addClass("fail");
+                }
+                $("#postResultsDiv").html("<p>" + "Post Successfully! <br>" + "Email Address: " + customer.email + "</br>" +
+                "Password: " + customer.upwd + "</br>" + "Valid User: " + customer.valid + "</p>");
+            }, 
+            error : function(e) {
+                alert("Error!")
+                console.log("ERROR: ", e);
             }
-        })
+        });
+        resetData();
     }
 
 });
