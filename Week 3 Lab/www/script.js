@@ -2,6 +2,7 @@ $( document ).ready(function() {
     $("#loginform").submit(function(event){
         event.preventDefault();
         ajaxPost();
+        console.log("MATE PLEASE JUST SAY SOMETHING")
     });
 
     function ajaxPost(){
@@ -34,4 +35,8 @@ $( document ).ready(function() {
         resetData();
     }
 
+    function resetData(){
+        $("#email").val("");
+        $("#upwd").val("");
+    }
 });
