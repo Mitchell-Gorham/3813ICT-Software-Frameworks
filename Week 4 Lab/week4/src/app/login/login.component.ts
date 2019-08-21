@@ -10,7 +10,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  email=""
+  em=""
   pass=""
   valid= [
     {username:"abc@com", pwd:"123"},
@@ -19,10 +19,10 @@ export class LoginComponent implements OnInit {
   ]
 
   loginClick() {
-    this.router.navigate(["/account"]);
+    console.log("EMAIL: "+this.em+" PASS: "+this.pass);
     for (var i = 0; i < this.valid.length; i++) {
-      if( this.email == this.valid[i].username && this.pass == this.valid[i].pwd ){
-
+      if( this.em == this.valid[i].username && this.pass == this.valid[i].pwd ){
+        this.router.navigate(["/account"]);
       }
 
     }
