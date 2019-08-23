@@ -22,12 +22,14 @@ export class ChatComponent implements OnInit {
     this.socketService.initSocket();
     this.ioConnection = this.socketService.onMessage()
       .subscribe((message:string) => {
+      //console.log('message inc:'+message);
       this.messages.push(message);
     });
   }
 
   private chat(){
     if(this.messagecontent){
+      //console.log(this.messagecontent);
       this.socketService.send(this.messagecontent);
       this.messagecontent=null;
     }else{

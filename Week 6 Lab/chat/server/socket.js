@@ -3,6 +3,7 @@ module.exports = {
         io.on('connection',(socket) => {
             console.log('user connection on port '+ PORT +' : '+ socket.id);
                 socket.on('message',(message)=>{
+                    //console.log("socket.js:"+message);
                     io.emit('message',message);
                 })
         });
