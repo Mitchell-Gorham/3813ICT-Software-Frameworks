@@ -13,7 +13,7 @@ module.exports = function(db,app) {
                     res.send({'num':num,err:null});
                 })
             } else {
-                res.sed({num:0,err:"duplicate item"});
+                res.send({num:0,err:"duplicate item"});
             }
         });
     });

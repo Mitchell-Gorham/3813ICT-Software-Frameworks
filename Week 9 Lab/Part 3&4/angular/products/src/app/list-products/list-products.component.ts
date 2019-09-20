@@ -11,23 +11,22 @@ import { SocketsService } from '../services/sockets.service';
 
 export class ListProductsComponent implements OnInit {
   products: any;
-  constructor(private proddata:ProductdataService,private router:Router,private socketservice:SocketsService) {}
+  constructor(private proddata:ProductdataService, private router:Router, private socketservice:SocketsService) {}
   
   ngOnInit() {
       this.socketservice.initSocket();
       this.socketservice.updatelist();
-      this.socketservice.onNewlist().subscribe((data)=>{  //socket listening for an update to the list
+      this.socketservice.onNewlist().subscribe((data)=>{
         this.products = data;
       });
   }
   
   deleteproduct(id){
     if (confirm("Are you sure you want to delete this item")){
-      this.proddata.deleteitem(id).subscribe((data)=>{
-        if(data.ok ==1){  //request socket server to send an update
-          this.socketservice.updatelist();
-          this.socketservice.prodcount();
-        }
+      this.proddata.deleteitems(id).subscribe((data)=>{
+        this.products = data;
+        //this.socketservice.updatelist();
+        this.socketservice.prodcount();
       });
     }
   }

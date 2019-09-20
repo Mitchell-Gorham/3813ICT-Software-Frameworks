@@ -24,8 +24,8 @@ export class ProductdataService {
 
     return this.http.post<any>('http://localhost:3000/api/update',  product );
   }
-  deleteitem(productID){
-    return this.http.post<any>('http://localhost:3000/api/deleteitem',  {'productid':productID} );
+  deleteitems(productID){
+    return this.http.post<any>('http://localhost:3000/api/deleteitems',  {'productid':productID} );
   }
   checkvalidid(productID){
     return this.http.post<any>('http://localhost:3000/api/checkvalidid',  {'id':productID} );
