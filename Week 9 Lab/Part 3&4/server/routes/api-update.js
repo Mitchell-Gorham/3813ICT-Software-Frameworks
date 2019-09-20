@@ -1,6 +1,6 @@
 module.exports = function(db,app,ObjectID) {
     var result;
-    app.post('/appupdate',function(req,res) {
+    app.post('/api/update',function(req,res) {
         if (!req.body) {
             return res.sendStatus(400)
         }

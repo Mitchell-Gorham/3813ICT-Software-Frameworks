@@ -11,7 +11,6 @@ export class HomeComponent implements OnInit {
   productcount:number=0;
  
   constructor(private socketservice:SocketsService) { }
-
   ngOnInit() {
     this.socketservice.prodcount();
     this.socketservice.onProdcount().subscribe((data:number)=>{
